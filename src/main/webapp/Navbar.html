@@ -1,0 +1,31 @@
+<style>
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+li {
+	float: left;
+	margin: 7px 10px;
+}
+
+li a {
+	display: block;
+	text-align: center;
+	padding: 10px 12px;
+	text-decoration: none;
+}
+</style>
+
+<ul>
+	<li><a href="home.jsp">Home</a></li>
+	<li><a href="addProduct.jsp">Add Product</a></li>
+	<li><a href="viewCustomer.jsp">view Customer</a></li>
+	<li style="float: right;"><form action="Logout">
+			<input type="submit" value="logout">
+		</form></li>
+	<li style="float: right;">Today's Date: <%=(new
+		java.util.Date()).toLocaleString()%></li>
+</ul>

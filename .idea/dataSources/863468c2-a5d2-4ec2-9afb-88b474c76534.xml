@@ -1147,142 +1147,245 @@
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <table id="338" parent="325" name="product">
+    <table id="338" parent="325" name="order_details">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <table id="339" parent="325" name="user">
+    <table id="339" parent="325" name="orders">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <column id="340" parent="336" name="username">
+    <table id="340" parent="325" name="product">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <table id="341" parent="325" name="user">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <column id="342" parent="336" name="username">
       <DataType>varchar(25)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="341" parent="336" name="password">
+    <column id="343" parent="336" name="password">
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="342" parent="337" name="id">
+    <column id="344" parent="337" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="343" parent="337" name="name">
+    <column id="345" parent="337" name="name">
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="344" parent="337" name="mobile">
+    <column id="346" parent="337" name="mobile">
       <DataType>int(12)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="345" parent="337" name="dob">
+    <column id="347" parent="337" name="dob">
       <DataType>varchar(15)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="346" parent="337" name="email">
+    <column id="348" parent="337" name="email">
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <key id="347" parent="337" name="PRIMARY">
+    <key id="349" parent="337" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="348" parent="338" name="id">
+    <column id="350" parent="338" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="349" parent="338" name="name">
-      <DataType>varchar(50)|0s</DataType>
+    <column id="351" parent="338" name="oid">
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="350" parent="338" name="description">
-      <DataType>varchar(200)|0s</DataType>
+    <column id="352" parent="338" name="pid">
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="351" parent="338" name="price">
+    <column id="353" parent="338" name="price">
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="352" parent="338" name="type">
-      <DataType>varchar(30)|0s</DataType>
+    <column id="354" parent="338" name="date">
+      <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="353" parent="338" name="validity">
-      <DataType>varchar(30)|0s</DataType>
+    <column id="355" parent="338" name="time">
+      <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="354" parent="338" name="creator">
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>7</Position>
-    </column>
-    <key id="355" parent="338" name="PRIMARY">
+    <foreign-key id="356" parent="338" name="FK_OrderDetail">
+      <ColNames>oid</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>orders</RefTableName>
+    </foreign-key>
+    <foreign-key id="357" parent="338" name="FK_ProductDetail">
+      <ColNames>pid</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>product</RefTableName>
+    </foreign-key>
+    <index id="358" parent="338" name="FK_OrderDetail">
+      <ColNames>oid</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="359" parent="338" name="FK_ProductDetail">
+      <ColNames>pid</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="360" parent="338" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="356" parent="339" name="id">
+    <column id="361" parent="339" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="357" parent="339" name="name">
+    <column id="362" parent="339" name="uid">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="363" parent="339" name="date">
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="364" parent="339" name="time">
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="365" parent="339" name="FK_Orders">
+      <ColNames>uid</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>id</RefColNames>
+      <RefTableName>user</RefTableName>
+    </foreign-key>
+    <index id="366" parent="339" name="FK_Orders">
+      <ColNames>uid</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="367" parent="339" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="368" parent="340" name="id">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="369" parent="340" name="name">
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="358" parent="339" name="mobile">
+    <column id="370" parent="340" name="description">
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="371" parent="340" name="price">
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="372" parent="340" name="type">
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="373" parent="340" name="validity">
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="374" parent="340" name="creator">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <key id="375" parent="340" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="376" parent="341" name="id">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="377" parent="341" name="name">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="378" parent="341" name="mobile">
       <DataType>varchar(12)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="359" parent="339" name="dob">
+    <column id="379" parent="341" name="dob">
       <DataType>varchar(15)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="360" parent="339" name="email">
+    <column id="380" parent="341" name="email">
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="361" parent="339" name="h_no">
-      <DataType>varchar(20)|0s</DataType>
+    <column id="381" parent="341" name="password">
+      <DataType>varchar(25)|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="362" parent="339" name="street">
-      <DataType>varchar(50)|0s</DataType>
+    <column id="382" parent="341" name="h_no">
+      <DataType>varchar(20)|0s</DataType>
       <Position>7</Position>
     </column>
-    <column id="363" parent="339" name="city">
+    <column id="383" parent="341" name="street">
       <DataType>varchar(50)|0s</DataType>
       <Position>8</Position>
     </column>
-    <column id="364" parent="339" name="state">
+    <column id="384" parent="341" name="city">
       <DataType>varchar(50)|0s</DataType>
       <Position>9</Position>
     </column>
-    <column id="365" parent="339" name="pincode">
-      <DataType>varchar(6)|0s</DataType>
+    <column id="385" parent="341" name="state">
+      <DataType>varchar(50)|0s</DataType>
       <Position>10</Position>
     </column>
-    <key id="366" parent="339" name="PRIMARY">
+    <column id="386" parent="341" name="pincode">
+      <DataType>varchar(6)|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <key id="387" parent="341" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>

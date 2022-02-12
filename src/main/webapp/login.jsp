@@ -8,10 +8,10 @@
 </head>
 <body>
 <h2>LogIn</h2>
-<form action="Login" method="post" style="width: 200px; margin:20px; border:solid 2px; padding:20px;">
-    Enter Username : <input type="text" name="uname"> <br><br>
+<form action="Login" method="post" style="width: 250px; margin:20px; border:solid 2px; padding:20px;">
+    Enter Username/Email : <input type="text" name="uname"> <br><br>
     Enter Password : <input type="password" name="pass"> <br><br>
-    <input type="submit" value="login" style="margin: auto">
+    <input type="submit" value="login" style="margin: auto"><br><br>
     <div>Not a member ? <a href="">Sign up</a></div>
 </form>
 </body>

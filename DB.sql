@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2022 at 07:54 AM
+-- Generation Time: Feb 12, 2022 at 12:16 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -56,6 +56,34 @@ CREATE TABLE `customer` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `time` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` int(11) NOT NULL,
+  `oid` int(11) NOT NULL,
+  `pid` int(11) NOT NULL,
+  `price` double NOT NULL,
+  `date` date NOT NULL,
+  `time` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
@@ -102,7 +130,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `mobile`, `dob`, `email`, `password`, `h_no`, `street`, `city`, `state`, `pincode`) VALUES
-(1, 'Ayush', '1543746774', '1-Aug-2002', 'abcd123@gmail.com', '', '7', 'qwerty', 'New York', 'NY', '185142');
+(1, 'Ayush', '1543746774', '1-Aug-2002', 'abcd@gmail.com', 'ar', '7', 'qwerty', 'New York', 'NY', '185142');
 
 --
 -- Indexes for dumped tables
@@ -113,6 +141,21 @@ INSERT INTO `user` (`id`, `name`, `mobile`, `dob`, `email`, `password`, `h_no`, 
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_Orders` (`uid`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_OrderDetail` (`oid`),
+  ADD KEY `FK_ProductDetail` (`pid`);
 
 --
 -- Indexes for table `product`
@@ -137,6 +180,18 @@ ALTER TABLE `customer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
@@ -147,6 +202,23 @@ ALTER TABLE `product`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `FK_Orders` FOREIGN KEY (`uid`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD CONSTRAINT `FK_OrderDetail` FOREIGN KEY (`oid`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `FK_ProductDetail` FOREIGN KEY (`pid`) REFERENCES `product` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

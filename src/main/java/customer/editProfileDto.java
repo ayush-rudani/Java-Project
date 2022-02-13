@@ -22,7 +22,7 @@ public class editProfileDto {
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
-
+;
             String sql2 = "UPDATE user SET name = ?, mobile = ?, dob = ?, email = ?, h_no = ?, street = ?, city = ?, state = ?, pincode = ? WHERE user.id = ?";
 
             if (rs.next()) {

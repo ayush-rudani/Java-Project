@@ -28,6 +28,7 @@
         <input type="text" name="state"><br><br>
         Pincode<br>
         <input type="text" name="pincode" style="width: 100px;"><br><br>
+        <input type="submit" value="Update Profile">
     </form>
 </div>
 </body>
